@@ -55,7 +55,6 @@ describe('SearchEngine', () => {
     );
   });
 
-  // src/data_retrieval/__tests__/search_engine.spec.ts
   test('should handle errors when fetching search results', async () => {
     const query = 'test query';
     const errorMessage = 'Network error';
