@@ -1,4 +1,3 @@
-// src/data_retrieval/__tests__/search_engine.test.ts
 import axios from 'axios';
 import { SearchEngine } from '@src/data_retrieval/search_engine';
 import mocked = jest.mocked;
@@ -56,7 +55,7 @@ describe('SearchEngine', () => {
     );
   });
 
-  // src/data_retrieval/__tests__/search_engine.test.ts
+  // src/data_retrieval/__tests__/search_engine.spec.ts
   test('should handle errors when fetching search results', async () => {
     const query = 'test query';
     const errorMessage = 'Network error';
