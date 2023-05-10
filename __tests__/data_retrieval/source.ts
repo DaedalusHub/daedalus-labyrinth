@@ -1,4 +1,4 @@
-import { Source } from '../../src/data_retrieval/source';
+import { Source } from '@src/data_retrieval/source';
 
 describe('Source', () => {
   test('should create a Source object', () => {

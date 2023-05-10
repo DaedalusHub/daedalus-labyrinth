@@ -1,6 +1,6 @@
 // src/data_retrieval/__tests__/search_engine.test.ts
 import axios from 'axios';
-import { SearchEngine } from '../../src/data_retrieval/search_engine';
+import { SearchEngine } from '@src/data_retrieval/search_engine';
 import mocked = jest.mocked;
 
 jest.mock('axios');
