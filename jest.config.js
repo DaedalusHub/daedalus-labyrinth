@@ -1,11 +1,7 @@
 module.exports = {
   preset: 'ts-jest',
-  testEnvironment: 'jsdom',
-  testMatch: [
-    '<rootDir>/src/**/*.spec.ts',
-    '<rootDir>/__tests__/**/*.spec.ts',
-    '<rootDir>/__features__/**/*.feature',
-  ],
+  testEnvironment: 'node',
+  testMatch: ['**/*.spec.ts', '**/*.feature'],
   moduleNameMapper: {
     '@src/(.*)': '<rootDir>/src/$1',
   },
