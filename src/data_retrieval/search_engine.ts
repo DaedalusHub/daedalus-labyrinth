@@ -29,6 +29,7 @@ export class SearchEngine {
         }
       );
 
+      console.log('Response: ', response);
       const items: CustomSearchResult[] = response.data.items;
       return items.map((item) => new Source(item.title, item.link));
     } catch (error) {

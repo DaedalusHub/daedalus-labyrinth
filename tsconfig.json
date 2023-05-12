@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
     "target": "es2017",
-    "module": "commonjs",
-    "jsx": "react",
+    "module": "ESNext",
+    "jsx": "react-jsx",
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
@@ -10,9 +10,17 @@
     "outDir": "dist",
     "baseUrl": ".",
     "paths": {
-      "@src/*": ["src/*"]
-    }
+      "@src/*": [
+        "src/*"
+      ]
+    },
+    "moduleResolution": "node"
   },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "dist"]
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
 }
