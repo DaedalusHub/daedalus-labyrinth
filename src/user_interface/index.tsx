@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Container, TextField } from '@material-ui/core';
+import { Button, Container, TextField } from '@mui/material';
 import { SearchEngine } from '../data_retrieval/search_engine';
 import { Source } from '../data_retrieval/source';
 
