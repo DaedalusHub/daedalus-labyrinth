@@ -1,5 +1,7 @@
 # Project
 .idea
+cypress/videos
+cypress/screenshots
 
 # Logs
 logs
