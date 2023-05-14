@@ -1,13 +1,18 @@
 import React, { useState } from 'react';
 import { Button, Container, TextField } from '@mui/material';
-import { SearchEngine } from '../data_retrieval/search_engine';
-import { Source } from '../data_retrieval/source';
+import { SearchEngine } from '@src/search/searchEngine';
+import { Source } from '@src/search/source';
+import { SummaryGenerator } from '@src/summarization/summaryGenerator';
 
 interface InputFormProps {
   searchEngine: SearchEngine;
+  summaryGenerator: SummaryGenerator;
 }
 
-const InputForm = ({ searchEngine }: InputFormProps): React.JSX.Element => {
+const InputForm = ({
+  searchEngine,
+  summaryGenerator,
+}: InputFormProps): React.JSX.Element => {
   const [input, setInput] = useState('');
   const [sources, setSources] = useState<Source[]>([]);
 
@@ -15,6 +20,11 @@ const InputForm = ({ searchEngine }: InputFormProps): React.JSX.Element => {
     event.preventDefault();
     const newSources = await searchEngine.search(input);
     setSources(newSources);
+  };
+
+  const handleSummarize = async (source: Source) => {
+    const summary = await summaryGenerator.summarizeSource(source.url);
+    alert(`Summary for ${source.title}: ${summary}`);
   };
 
   return (
@@ -36,6 +46,13 @@ const InputForm = ({ searchEngine }: InputFormProps): React.JSX.Element => {
         <div key={source.title}>
           <h2>{source.title}</h2>
           <a href={source.url}>{source.url}</a>
+          <Button
+            variant="contained"
+            color="secondary"
+            onClick={() => handleSummarize(source)}
+          >
+            Summarize
+          </Button>
         </div>
       ))}
     </Container>
