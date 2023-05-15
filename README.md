@@ -28,24 +28,11 @@ summaries of each source, creates an embedding from the summary, and adds the em
 ## Technology Stack
 
 - TypeScript
+- React (for front-end)
+- Next.js (for back-end)
+- Weaviate (for embeddings storage)
 - OpenAI GPT (for text summarization)
 - OpenAI CLIP (for embeddings generation)
-- Weaviate (for embeddings storage)
-- Vite (for development and build)
-- React.js (for front-end)
-
-## Directory Structure
-
-```text
-├── src/
-│   ├── user_interface/
-│   ├── data_retrieval/
-│   ├── summarization/
-│   ├── embeddings/
-│   └── weaviate_storage/
-├── __tests__/
-└── __features__/
-```
 
 ## Contributors
 
