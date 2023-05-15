@@ -1,14 +1,16 @@
 import axios from 'axios';
-import { SearchEngine } from '@src/data_retrieval/search_engine';
 import mocked = jest.mocked;
+import search from "../../src/search/search";
+import { expect } from '@jest/globals';
 
 jest.mock('axios');
 
 const mockedAxios = mocked(axios, { shallow: false });
-
 const apiKey = 'your-api-key';
 const searchEngineId = 'your-search-engine-id';
-const testSearchEngine = new SearchEngine(apiKey, searchEngineId);
+
+process.env.NEXT_PUBLIC_GOOGLE_API_KEY = apiKey;
+process.env.NEXT_PUBLIC_SEARCH_ENGINE_ID = searchEngineId;
 
 describe('SearchEngine', () => {
   beforeEach(() => {
@@ -36,7 +38,7 @@ describe('SearchEngine', () => {
 
     mockedAxios.get.mockResolvedValue(response);
 
-    const results = await testSearchEngine.search(query);
+    const results = await search(query);
     expect(results.length).toBe(2);
     expect(results[0].title).toBe('Test Title 1');
     expect(results[0].url).toBe('https://example.com/1');
@@ -60,18 +62,7 @@ describe('SearchEngine', () => {
     const errorMessage = 'Network error';
     mockedAxios.get.mockRejectedValue(new Error(errorMessage));
 
-    // Temporarily suppress console.error output
-    const originalConsoleError = console.error;
-    console.error = jest.fn();
-
-    try {
-      await testSearchEngine.search(query);
-    } catch (error) {
-      expect((error as Error).message).toBe(errorMessage);
-    }
-
-    // Restore the original console.error function
-    console.error = originalConsoleError;
+    await expect(search(query)).rejects.toThrow(errorMessage);
 
     expect(mockedAxios.get).toHaveBeenCalledTimes(1);
     expect(mockedAxios.get).toHaveBeenCalledWith(

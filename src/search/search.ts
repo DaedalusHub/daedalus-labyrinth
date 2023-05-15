@@ -10,8 +10,8 @@ interface CustomSearchResult {
 
 export default async function search(query: string): Promise<Source[]> {
   try {
-    const apiKey = process.env.NEXT_PUBLIC_GOOGLE_API_KEY;
-    const searchEngineId = process.env.NEXT_PUBLIC_SEARCH_ENGINE_ID;
+    const apiKey = process.env.NEXT_PUBLIC_GOOGLE_API_KEY || '';
+    const searchEngineId = process.env.NEXT_PUBLIC_SEARCH_ENGINE_ID || '';
 
     console.log('API key: ', apiKey);
     console.log('Search engine ID: ', searchEngineId);
