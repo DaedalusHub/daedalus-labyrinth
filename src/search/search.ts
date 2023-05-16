@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { Source } from './source';
+import {WebSource} from './webSource';
 
 interface CustomSearchResult {
   title: string;
@@ -8,7 +8,7 @@ interface CustomSearchResult {
 }
 
 
-export default async function search(query: string): Promise<Source[]> {
+export default async function search(query: string): Promise<WebSource[]> {
   try {
     const apiKey = process.env.NEXT_PUBLIC_GOOGLE_API_KEY || '';
     const searchEngineId = process.env.NEXT_PUBLIC_SEARCH_ENGINE_ID || '';
@@ -29,7 +29,7 @@ export default async function search(query: string): Promise<Source[]> {
     console.log('Response: ', response);
     const items: CustomSearchResult[] = response.data.items;
 return items.map(
-  (item) => new Source(item.title, item.link, item.snippet)
+  (item) => new WebSource(item.title, item.link, item.snippet)
 );
 } catch (error) {
   // Handle errors (e.g. network issues, rate limits, API costs)

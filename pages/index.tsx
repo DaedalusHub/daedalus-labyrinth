@@ -1,22 +1,11 @@
 import * as React from 'react';
 import Container from '@mui/material/Container';
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
-import WebSearch from "@src/components/WebSearch";
-import {Source} from "@src/search/source";
-import search from "@src/search/search";
+import WebSearch from "@components/WebSearch";
+import {Box} from "@mui/material";
+import Title from "@components/Title";
+import Copyright from "@components/Copyright";
 
 export default function Home() {
-  const [sources, setSources] = React.useState<Source[]>([]);
-
-  const handleSearch = async (searchTerm: string) => {
-    try {
-      const newSources = await search(searchTerm);
-      setSources(newSources);
-    } catch (error) {
-      console.error("Error occurred while searching:", error);
-    }
-  };
   return (
     <Container maxWidth="lg">
       <Box
@@ -28,10 +17,9 @@ export default function Home() {
           alignItems: 'center',
         }}
       >
-        <Typography variant="h4" component="h1" gutterBottom>
-          Daedalus Labyrinth
-        </Typography>
-        <WebSearch sources={sources} onSearch={handleSearch} />
+        <Title/>
+        <WebSearch/>
+        <Copyright/>
       </Box>
     </Container>
   );

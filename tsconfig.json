@@ -24,9 +24,19 @@
         "name": "next"
       }
     ],
-    "types": ["jest","node"],
     "paths": {
-      "@src/*": ["./src/*"]
+      "@src/*": [
+        "./src/*"
+      ],
+      "@pages/*": [
+        "./pages/*"
+      ],
+      "@tests/*": [
+        "./__tests__/*"
+      ],
+      "@components/*": [
+        "./components/*"
+      ]
     }
   },
   "include": [

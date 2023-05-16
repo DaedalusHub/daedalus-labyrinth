@@ -1,14 +1,14 @@
-import { styled } from '@mui/system';
-import { Paper, Button, Box, Typography } from '@mui/material';
+import {styled} from '@mui/system';
+import {Box, Button, Paper, Typography} from '@mui/material';
 
-export const StyledPaper = styled(Paper)(({ theme }) => ({
+export const StyledPaper = styled(Paper)(({theme}) => ({
   padding: theme.spacing(2),
   margin: theme.spacing(2, 0),
   display: 'flex',
   flexDirection: 'column',
 }));
 
-export const TitleContainer = styled(Box)(({ theme }) => ({
+export const TitleContainer = styled(Box)(({theme}) => ({
   display: 'flex',
   justifyContent: 'space-between',
   alignItems: 'center',
@@ -20,7 +20,7 @@ export const SummarizeButton = styled(Button)(({ theme }) => ({
   marginTop: theme.spacing(1),
 }));
 
-export const Snippet = styled(Typography)(({ theme }) => ({
+export const Snippet = styled(Typography)(({theme}) => ({
   display: '-webkit-box',
   WebkitLineClamp: 3,
   WebkitBoxOrient: 'vertical',
@@ -28,3 +28,8 @@ export const Snippet = styled(Typography)(({ theme }) => ({
   textOverflow: 'ellipsis',
   marginTop: theme.spacing(1),
 }));
+
+export const Summary = styled(Typography)({  // Add this style
+  marginTop: '8px',
+  color: '#999',
+});
