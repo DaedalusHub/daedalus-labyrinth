@@ -1,5 +1,6 @@
 import {styled} from '@mui/system';
 import {Box, Button, Paper, Typography} from '@mui/material';
+import theme from "@src/theme";
 
 export const StyledPaper = styled(Paper)(({theme}) => ({
   padding: theme.spacing(2),
@@ -15,11 +16,6 @@ export const TitleContainer = styled(Box)(({theme}) => ({
   marginTop: theme.spacing(1),
 }));
 
-export const SummarizeButton = styled(Button)(({ theme }) => ({
-  alignSelf: 'flex-start',
-  marginTop: theme.spacing(1),
-}));
-
 export const Snippet = styled(Typography)(({theme}) => ({
   display: '-webkit-box',
   WebkitLineClamp: 3,
@@ -31,5 +27,5 @@ export const Snippet = styled(Typography)(({theme}) => ({
 
 export const Summary = styled(Typography)({  // Add this style
   marginTop: '8px',
-  color: '#999',
+  color: theme.palette.primary.main,
 });
