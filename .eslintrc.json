@@ -1,20 +1,8 @@
 {
-  "parser": "@typescript-eslint/parser",
-  "plugins": [
-    "@typescript-eslint",
-    "react"
-  ],
   "extends": [
-    "eslint:recommended",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:react/recommended",
+    "next/core-web-vitals",
     "plugin:cypress/recommended",
-    "prettier"
-  ],
-  "rules": {},
-  "env": {
-    "node": true,
-    "es6": true,
-    "browser": true
-  }
+    "plugin:jest/recommended",
+    "plugin:jest/recommended"
+  ]
 }

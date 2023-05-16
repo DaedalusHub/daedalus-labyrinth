@@ -1,0 +1,13 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "jsx": "react",
+    "esModuleInterop": true,
+    "module": "commonjs",
+    "types": ["jest","node"]
+  },
+  "include": [
+    "**/*.spec.ts",
+    "__tests__/**/*.feature",
+  ]
+}
