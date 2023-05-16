@@ -1,4 +1,4 @@
-import { Source } from '../../src/search/source';
+import { WebSource } from '../../src/search/webSource';
 import { expect } from '@jest/globals';
 
 describe('Source', () => {
@@ -8,7 +8,7 @@ describe('Source', () => {
     const snippet = 'Test snippet';
     const type = 'website';
 
-    const source = new Source(title, url, snippet, type);
+    const source = new WebSource(title, url, snippet, type);
 
     expect(source.title).toBe(title);
     expect(source.url).toBe(url);
@@ -21,7 +21,7 @@ describe('Source', () => {
     const url = 'https://example.com';
     const snippet = 'Test snippet';
 
-    const source = new Source(title, url, snippet);
+    const source = new WebSource(title, url, snippet);
 
     expect(source.title).toBe(title);
     expect(source.url).toBe(url);

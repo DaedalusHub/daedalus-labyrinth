@@ -3,11 +3,11 @@ import chunkText from "@src/summarization/chunkText";
 import countTokens from "@src/summarization/countTokens";
 
 const configuration = new Configuration({
-  apiKey: process.env.OPENAI_API_KEY,
+  apiKey: process.env.OPENAI_API_KEY
 });
 
 export async function generateSummary(sourceText: string, searchPrompt: string) {
-  if (!configuration.apiKey) {
+  if (!configuration.apiKey && process.env.NODE_ENV !== 'test') {
     console.error('Missing OPENAI_API_KEY environment variable');
     return '';
   }

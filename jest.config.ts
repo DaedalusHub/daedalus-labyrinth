@@ -5,6 +5,9 @@ module.exports = {
   setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
   moduleNameMapper: {
     '@src/(.*)': '<rootDir>/src/$1',
+    '@test/(.*)': '<rootDir>/__tests__/$1',
+    '@pages/(.*)': '<rootDir>/pages/$1',
+    '@components/(.*)': '<rootDir>/components/$1',
   },
   transform: {
     '^.+\\.tsx?$': 'ts-jest',
