@@ -69,11 +69,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:  
       - name: Run Cypress tests
-        uses: cypress-io/github-action@v3
+        uses: cypress-io/github-action@v5
         with:
           start: yarn start
           wait-on: 'http://localhost:3000'
-          command: yarn cypress:run
           
       - name: Upload Cypress screenshots
         if: failure()
