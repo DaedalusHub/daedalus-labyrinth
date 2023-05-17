@@ -34,10 +34,6 @@ summaries of each source, creates an embedding from the summary, and adds the em
 - OpenAI GPT (for text summarization)
 - OpenAI CLIP (for embeddings generation)
 
-## Contributors
-
-- [Sam Biggins](https://github.com/smileyet) - Creator and maintainer
-
 ## License
 
 This project is licensed under the [Apache 2.0 License](https://www.apache.org/licenses/LICENSE-2.0).
