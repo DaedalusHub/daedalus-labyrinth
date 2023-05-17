@@ -7,12 +7,26 @@ on:
     branches: [ 'main' ]
 
 jobs:
-  build:
+  lint:
     runs-on: ubuntu-latest
     strategy:
       matrix:
         node-version: [ 18.x ]
-
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'yarn'
+      - run: yarn install --frozen-lockfile
+      - run: yarn lint
+      
+  build:
+    needs: lint
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [ 18.x ]
     steps:
       - uses: actions/checkout@v3
       - name: Use Node.js ${{ matrix.node-version }}
@@ -23,21 +37,13 @@ jobs:
       - run: yarn install --frozen-lockfile
       - run: yarn build
 
-  lint:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node-version }}
-          cache: 'yarn'
-      - run: yarn install --frozen-lockfile
-      - run: yarn lint
 
-  test:
-    needs: build
+  jest:
+    needs: lint
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [ 18.x ]
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -45,14 +51,9 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: 'yarn'
       - run: yarn install --frozen-lockfile
+      
       - name: Run Jest tests
         run: yarn test
-      - name: Run Cypress tests
-        uses: cypress-io/github-action@v3
-        with:
-          start: yarn start
-          wait-on: 'http://localhost:3000'
-          command: yarn cypress:run
 
       - name: Upload Jest results
         if: always()
@@ -61,7 +62,18 @@ jobs:
           name: jest-report
           path: jest-report/
           retention-days: 30
-
+          
+  cypress:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:  
+      - name: Run Cypress tests
+        uses: cypress-io/github-action@v3
+        with:
+          start: yarn start
+          wait-on: 'http://localhost:3000'
+          command: yarn cypress:run
+          
       - name: Upload Cypress screenshots
         if: failure()
         uses: actions/upload-artifact@v2
